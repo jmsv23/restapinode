@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Título</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script>
+		var res = null;
+		// Using YQL and JSONP
+$.ajax({
+    url: "http://localhost:3000/citas",
+ 
+    // the name of the callback parameter, as specified by the YQL service
+    jsonp: "callback",
+ 
+    // tell jQuery we're expecting JSONP
+    dataType: "jsonp",
+ 
+    // work with the response
+    success: function( response ) {
+       res = response; // server response
+       console.log(res);
+       var tam = res.length;
+       for(i = 0; i < tam; i++) {
+       	$('body').append('<span>nombre: ' + res[i].nombre + ' cita: ' + res[i].cita + '</span><br />');
+       }
+    }
+});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
